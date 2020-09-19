@@ -8,6 +8,7 @@ const defaultRenderOption = (option: Option) => {
         <option
             key={option.id}
             value={option.id}
+            disabled={option.disabled}
             className={cx('ui-select-item', option.className)}
         >
             {option.label}
@@ -16,13 +17,36 @@ const defaultRenderOption = (option: Option) => {
 }
 
 const RadioGroup: React.FC<Props> = (props) => {
-    const options = props.options.map(it => ({...it, className: cx('ui-select__item', it.className)}));
+    const {
+        options,
+        field,
+        renderToOption,
+        value,
+        onChange,
+        className,
+        ...restProps
+    } = props;
+    const optionsToRender = options.map(it => ({...it, className: cx('ui-select__item', it.className)}));
     const handlerChange = (event: React.SyntheticEvent<HTMLSelectElement>) => {
-        props.onChange && props.onChange(event.currentTarget.value);
+        onChange && onChange(event.currentTarget.value);
+    }
+    if (!value) {
+        optionsToRender.unshift({
+            id: '',
+            label: '',
+            disabled: true,
+            className: 'ui-select__item'
+        })
     }
     return (
-        <select className={cx('ui-select', props.className)} onChange={handlerChange}>
-            {options.map(props.renderToOption || defaultRenderOption)}
+        <select
+            className={cx('ui-select', className)}
+            onChange={handlerChange}
+            value={value || ''}
+            placeholder={field.placeholder}
+            {...restProps}
+        >
+            {optionsToRender.map(renderToOption || defaultRenderOption)}
         </select>
     );
 }

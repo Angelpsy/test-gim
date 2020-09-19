@@ -6,8 +6,12 @@ export interface Props extends DefaultProps {
     values: any;
     fields: Field[];
     isCanBeSent: boolean;
-    changeValueField: (fieldName: string, value: any) => void;
+    errorsByField: {
+        [fieldName: string]: string;
+    };
     dictionaries: {
         [dictionaryName: string]: DictionaryItem[];
     }
+    changeValueField: (fieldName: string, value: any) => void;
+    onSubmit: () => void;
 }

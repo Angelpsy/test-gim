@@ -1,3 +1,5 @@
+import * as yup from 'yup';
+
 import {Field, FieldType} from '../../types/fields';
 
 export const fields: Field[] = [
@@ -9,6 +11,7 @@ export const fields: Field[] = [
         defaultValue: null,
         require: true,
         checkIsFill: (val) => val !== '' &&  val !== null,
+        validatorScheme: yup.string().matches(/[a-zA-Z]/).required(),
     },
     {
         id: 'email',
@@ -19,6 +22,7 @@ export const fields: Field[] = [
         require: true,
         iconStartName: 'email',
         checkIsFill: (val) => val !== '' &&  val !== null,
+        validatorScheme: yup.string().required().email(),
     },
     {
         id: 'password',
@@ -30,6 +34,7 @@ export const fields: Field[] = [
         require: true,
         iconStartName: 'secured',
         checkIsFill: (val) => val !== '' &&  val !== null,
+        validatorScheme: yup.string().min(6).required(),
     },
     {
         id: 'country',
@@ -40,6 +45,7 @@ export const fields: Field[] = [
         defaultValue: null,
         require: true,
         checkIsFill: (val) => val !== null,
+        validatorScheme: yup.string().required(),
     },
     {
         id: 'gender',
@@ -59,6 +65,7 @@ export const fields: Field[] = [
             },
         ],
         checkIsFill: (val) => val !== null,
+        validatorScheme: yup.string().required(),
     },
     {
         id: 'consent',
@@ -69,5 +76,6 @@ export const fields: Field[] = [
         label: 'Accept <a href="#">terms</a> and <a href="#">conditions</a>',
         isLabelAsHtml: true,
         checkIsFill: (val) => val !== false,
+        validatorScheme: yup.boolean().oneOf([true]).required(),
     },
 ];

@@ -10,6 +10,7 @@ export enum FieldType {
 export interface Option extends DefaultProps {
     id: string;
     label: string;
+    disabled?: boolean;
 }
 
 export interface Field {
@@ -26,4 +27,5 @@ export interface Field {
     dictionaryNameToOptions?: string;
     options?: Option[];
     checkIsFill: (val: any) => boolean;
+    validatorScheme: any;
 }

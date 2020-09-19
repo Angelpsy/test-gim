@@ -14,7 +14,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,6 +46,7 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.0.0",
     "@storybook/react": "^5.3.19",
-    "@types/classnames": "^2.2.10"
+    "@types/classnames": "^2.2.10",
+    "@types/yup": "^0.29.7"
   }
 }

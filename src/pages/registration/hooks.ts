@@ -32,7 +32,7 @@ export const useGetDictionaryByName = (dictionaryByName: string) => {
             ];
             setDictionary(res);
         }, 500);
-    }, []);
+    }, [dictionaryByName]);
 
     return dictionary;
 }

@@ -11,9 +11,21 @@ import UIButton from '../../ui/button';
 import {getOptionByItemDictionary} from "../../utils/to-render";
 
 const Form: React.FC<Props> = (props) => {
-    const {values, fields, dictionaries, isCanBeSent} = props;
+    const {
+        values,
+        fields,
+        dictionaries,
+        isCanBeSent,
+        errorsByField,
+        onSubmit
+    } = props;
+
+    const handlerSubmit = (event: React.SyntheticEvent) => {
+        event.preventDefault();
+        onSubmit();
+    }
     return (
-        <div className={cx('b-form', props.className)}>
+        <form className={cx('b-form', props.className)} onSubmit={handlerSubmit}>
             Form <br/>
             {fields.map((field) => {
                 if (field.type === FieldType.TEXT) {
@@ -74,14 +86,15 @@ const Form: React.FC<Props> = (props) => {
                 return null;
             })}
             <div className={'b-form__footer'}>
-                <UIButton disabled={isCanBeSent} className={'b-form__action'}>
+                <UIButton disabled={!isCanBeSent} className={'b-form__action'}>
                     Sign up
                 </UIButton>
             </div>
+            <pre>errorsByField: {JSON.stringify(errorsByField, null, 2)}</pre>
             <pre>values: {JSON.stringify(values, null, 2)}</pre>
             <pre>fields: {JSON.stringify(fields, null, 2)}</pre>
             <pre>dictionaries: {JSON.stringify(dictionaries, null, 2)}</pre>
-        </div>
+        </form>
     );
 }
 

@@ -25,4 +25,5 @@ export interface Field {
     iconStartName?: string;
     dictionaryNameToOptions?: string;
     options?: Option[];
+    checkIsFill: (val: any) => boolean;
 }

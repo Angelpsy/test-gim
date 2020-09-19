@@ -7,10 +7,11 @@ import UIRadioGroup from '../../ui/radio-group';
 import UIRadio from '../../ui/radio';
 import UICheckbox from '../../ui/checkbox';
 import UISelect from '../../ui/select';
+import UIButton from '../../ui/button';
 import {getOptionByItemDictionary} from "../../utils/to-render";
 
 const Form: React.FC<Props> = (props) => {
-    const {values, fields, dictionaries} = props;
+    const {values, fields, dictionaries, isCanBeSent} = props;
     return (
         <div className={cx('b-form', props.className)}>
             Form <br/>
@@ -72,6 +73,11 @@ const Form: React.FC<Props> = (props) => {
                 }
                 return null;
             })}
+            <div className={'b-form__footer'}>
+                <UIButton disabled={isCanBeSent} className={'b-form__action'}>
+                    Sign up
+                </UIButton>
+            </div>
             <pre>values: {JSON.stringify(values, null, 2)}</pre>
             <pre>fields: {JSON.stringify(fields, null, 2)}</pre>
             <pre>dictionaries: {JSON.stringify(dictionaries, null, 2)}</pre>

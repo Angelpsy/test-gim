@@ -6,7 +6,7 @@ import {useGetDictionaryByName} from "./hooks";
 
 const defaultValues = fields.reduce((val, field) => {
     const res: any = {...val};
-    res[field.pathToValue] = field.defaultValue || null;
+    res[field.pathToValue] = field.defaultValue ?? null;
     return res;
 }, {});
 
@@ -23,6 +23,10 @@ function PageRegistration() {
 
     const dictionaries = useMemo(() => ({countries}), [countries]);
 
+    const isCanBeSent = useMemo(() => {
+        return !fields.every((field) => field.checkIsFill(values[field.pathToValue]))
+    }, [values])
+
     return (
         <div className={'p-registration'}>
             <Form
@@ -30,6 +34,7 @@ function PageRegistration() {
                 values={values}
                 fields={fields}
                 dictionaries={dictionaries}
+                isCanBeSent={isCanBeSent}
                 changeValueField={changeValueField}
             />
         </div>

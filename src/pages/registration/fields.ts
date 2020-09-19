@@ -8,6 +8,7 @@ export const fields: Field[] = [
         placeholder: 'Enter your name',
         defaultValue: null,
         require: true,
+        checkIsFill: (val) => val !== '' &&  val !== null,
     },
     {
         id: 'email',
@@ -17,6 +18,7 @@ export const fields: Field[] = [
         defaultValue: null,
         require: true,
         iconStartName: 'email',
+        checkIsFill: (val) => val !== '' &&  val !== null,
     },
     {
         id: 'password',
@@ -27,6 +29,7 @@ export const fields: Field[] = [
         defaultValue: null,
         require: true,
         iconStartName: 'secured',
+        checkIsFill: (val) => val !== '' &&  val !== null,
     },
     {
         id: 'country',
@@ -36,6 +39,7 @@ export const fields: Field[] = [
         dictionaryNameToOptions: 'countries',
         defaultValue: null,
         require: true,
+        checkIsFill: (val) => val !== null,
     },
     {
         id: 'gender',
@@ -54,6 +58,7 @@ export const fields: Field[] = [
                 label: 'Female',
             },
         ],
+        checkIsFill: (val) => val !== null,
     },
     {
         id: 'consent',
@@ -63,5 +68,6 @@ export const fields: Field[] = [
         require: true,
         label: 'Accept <a href="#">terms</a> and <a href="#">conditions</a>',
         isLabelAsHtml: true,
+        checkIsFill: (val) => val !== false,
     },
 ];

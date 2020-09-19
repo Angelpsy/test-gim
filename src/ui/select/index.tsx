@@ -5,7 +5,13 @@ import {Option} from "../../types/fields";
 
 const defaultRenderOption = (option: Option) => {
     return (
-        <option value={option.id} className={cx('ui-select-item', option.className)}>{option.label}</option>
+        <option
+            key={option.id}
+            value={option.id}
+            className={cx('ui-select-item', option.className)}
+        >
+            {option.label}
+        </option>
     );
 }
 

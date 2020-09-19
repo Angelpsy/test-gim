@@ -2,7 +2,7 @@ import { DefaultProps } from '../../types/components';
 import {Field} from '../../types/fields';
 
 export interface Props extends DefaultProps {
-    values: object;
+    values: any;
     fields: Field[];
-    changeValueField: (fieldName: keyof Field['pathToValue'], value: any) => void;
+    changeValueField: (fieldName: string, value: any) => void;
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Form from '../../components/form';
 import { fields } from './fields';
-import { Field } from '../../types/fields';
 import { Values } from './types';
 
 const defaultValues = fields.reduce((val, field) => {
@@ -13,7 +12,7 @@ const defaultValues = fields.reduce((val, field) => {
 function PageRegistration() {
     const [values, setValues] = useState<Values>({...defaultValues});
 
-    const changeValueField = (pathToValue: keyof Field['pathToValue'], value: any) => {
+    const changeValueField = (pathToValue: string, value: any) => {
         setValues({
             ...values,
             [pathToValue]: value,

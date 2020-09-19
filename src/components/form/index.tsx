@@ -5,6 +5,7 @@ import {FieldType} from "../../types/fields";
 import UITextInput from '../../ui/text-input';
 import UIRadioGroup from '../../ui/radio-group';
 import UIRadio from '../../ui/radio';
+import UICheckbox from '../../ui/checkbox';
 
 const Form: React.FC<Props> = (props) => {
     const {values, fields} = props;
@@ -40,6 +41,17 @@ const Form: React.FC<Props> = (props) => {
                                     />
                                 );
                             }}
+                        />
+                    );
+                }
+                if (field.type === FieldType.CHECKBOX) {
+                    return (
+                        <UICheckbox
+                            key={field.id}
+                            checked={values[field.pathToValue]}
+                            labelEnd={field.label}
+                            isLabelAsHtml={field.isLabelAsHtml}
+                            onChange={(val) => props.changeValueField(field.pathToValue, val)}
                         />
                     );
                 }

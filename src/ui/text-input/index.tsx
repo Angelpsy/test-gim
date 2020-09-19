@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { Props } from './types';
 
-const Form: React.FC<Props> = (props) => {
+const TextInput: React.FC<Props> = (props) => {
     const {
         value,
         field,
@@ -21,7 +21,7 @@ const Form: React.FC<Props> = (props) => {
     }
     return (
         <input
-            className={cx('ui-text-field', className)}
+            className={cx('ui-text-input', className)}
             value={value || ''}
             type={field.nativeType || 'text'}
             placeholder={field.placeholder}
@@ -32,4 +32,4 @@ const Form: React.FC<Props> = (props) => {
     );
 }
 
-export default Form;
+export default TextInput;

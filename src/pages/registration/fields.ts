@@ -56,8 +56,8 @@ export const fields: Field[] = [
         ],
     },
     {
-        id: 'country',
-        pathToValue: 'country',
+        id: 'consent',
+        pathToValue: 'consent',
         type: FieldType.CHECKBOX,
         defaultValue: false,
         require: true,

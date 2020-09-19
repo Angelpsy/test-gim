@@ -1,3 +1,5 @@
+import {DefaultProps} from "./components";
+
 export enum FieldType {
     TEXT = 'text',
     SELECT = 'select',
@@ -5,7 +7,7 @@ export enum FieldType {
     CHECKBOX = 'checkbox',
 }
 
-export interface Option {
+export interface Option extends DefaultProps {
     id: string;
     label: string;
 }

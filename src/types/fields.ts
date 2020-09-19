@@ -1,6 +1,13 @@
 export enum FieldType {
     TEXT = 'text',
     SELECT = 'select',
+    RADIO = 'radio',
+    CHECKBOX = 'checkbox',
+}
+
+export interface Option {
+    id: string;
+    label: string;
 }
 
 export interface Field {
@@ -9,7 +16,11 @@ export interface Field {
     defaultValue?: any;
     type: FieldType;
     nativeType?: string;
+    require?: boolean;
     label?: string;
+    isLabelAsHtml?: boolean;
     placeholder?: string;
+    iconStartName?: string;
     dictionaryNameToOptions?: string;
+    options?: Option[];
 }

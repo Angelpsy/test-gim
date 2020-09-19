@@ -1,10 +1,10 @@
 import React from 'react';
-import Form from './components/form';
+import PageRegistration from './pages/registration';
 
 function App() {
   return (
-      <div className={'p-main'}>
-        <Form className={'p-main__form'}/>
+      <div className={'app'}>
+          <PageRegistration />
       </div>
   );
 }

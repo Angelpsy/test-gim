@@ -11,7 +11,7 @@ export const fields: Field[] = [
         defaultValue: null,
         require: true,
         checkIsFill: (val) => val !== '' &&  val !== null,
-        validatorScheme: yup.string().matches(/[a-zA-Z]/).required(),
+        validatorScheme: yup.string().matches(/[a-zA-Z]/, 'Please enter a valid name').required(),
     },
     {
         id: 'email',

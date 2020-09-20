@@ -1,0 +1,11 @@
+.b-form {}
+.b-form__title {
+    margin-top: 0;
+    margin-bottom: 37px;
+    font-size: var(--title-fs);
+    text-align: center;
+}
+.b-form__main {}
+.b-form__row {}
+.b-form__footer {}
+.b-form__action {}

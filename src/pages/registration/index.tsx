@@ -5,6 +5,8 @@ import {Values} from './types';
 import {useGetDictionaryByName} from "./hooks";
 import * as yup from 'yup';
 
+import './style.css';
+
 const defaultValues = fields.reduce((val, field) => {
     const res: any = {...val};
     res[field.pathToValue] = field.defaultValue ?? null;
@@ -61,17 +63,19 @@ function PageRegistration() {
     }
 
     return (
-        <div className={'p-registration'}>
-            <Form
-                className={'p-registration__form'}
-                values={values}
-                fields={fields}
-                dictionaries={dictionaries}
-                isCanBeSent={isCanBeSent}
-                errorsByField={errorsByField}
-                changeValueField={changeValueField}
-                onSubmit={handlerSend}
-            />
+        <div className={'p-registration app-page'}>
+            <div className={'p-registration__container'}>
+                <Form
+                    className={'p-registration__form'}
+                    values={values}
+                    fields={fields}
+                    dictionaries={dictionaries}
+                    isCanBeSent={isCanBeSent}
+                    errorsByField={errorsByField}
+                    changeValueField={changeValueField}
+                    onSubmit={handlerSend}
+                />
+            </div>
         </div>
     );
 }

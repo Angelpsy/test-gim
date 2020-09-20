@@ -1,0 +1,50 @@
+:root {
+    --color-black: #222;
+    --color-white: #fff;
+    --color-red: #E82828;
+    --color-gray: #A2A2A2;
+    --color-gray-thin: #F5F8FA;
+    --color-blue: #0094FF;
+
+    --page-color-bg: #102250;
+
+    --input-fs: 14px;
+    --input-color-bg: var(--color-gray-thin);
+    --input-color-text: var(--color-gray);
+    --input-color-placeholder: var(--color-gray);
+    --input-pl: 18px;
+
+    --title-fs: 28px;
+
+    --action-fs: 18px;
+    --action-color-text: var(--color-white);
+    --action-color-bg: var(--color-blue);
+    --action-color-bg--disabled: var(--color-gray);
+
+    --error-message-fs: 10px;
+    --error-message-lh: 13px;
+    --error-message-color-text: var(--color-red);
+
+    --radio-input-color: var(--color-blue);
+    --checkbox-input-color: var(--color-blue);
+
+    --link-color: var(--color-blue);
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-black);
+}
+
+.app {
+    height: 100%;
+}

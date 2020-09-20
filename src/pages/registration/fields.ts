@@ -1,6 +1,6 @@
 import * as yup from 'yup';
-
 import {Field, FieldType} from '../../types/fields';
+import {Genders} from "../../types/genders";
 
 export const fields: Field[] = [
     {
@@ -56,11 +56,11 @@ export const fields: Field[] = [
         require: true,
         options: [
             {
-                id: 'm',
+                id: Genders.MALE,
                 label: 'Male',
             },
             {
-                id: 'f',
+                id: Genders.FEMALE,
                 label: 'Female',
             },
         ],

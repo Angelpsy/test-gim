@@ -1,10 +1,30 @@
+import { apolloClient } from './index';
+import { gql } from 'apollo-boost';
+import {Genders} from "../types/genders";
+
+export interface SignupInput {
+    name: string;
+    email: string;
+    password: string;
+    country: string;
+    gender: Genders;
+}
+
+export const fieldsNamesToSend = ['name', 'email', 'password', 'country', 'gender'];
+
+const signupMutation = gql`
+    mutation($user: SignupInput!) {
+      signup(input: $user) {
+        name
+      }
+    }
+`;
+
 const Api = {
-    sendSignUp(data: any) {
-        return new Promise<boolean>((resolve) => {
-            console.group('send data to registration');
-            console.log(data);
-            console.groupEnd();
-            setTimeout(resolve, 10000);
+    sendSignUp(data: SignupInput) {
+        return apolloClient.mutate({
+            mutation: signupMutation,
+            variables: {user: data},
         })
     }
 }

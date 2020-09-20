@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {DictionaryItem} from "../../types/dictionaries";
-import Api from '../../api/refistration';
+import Api, {SignupInput, fieldsNamesToSend} from '../../api/refistration';
 
 export const useGetDictionaryByName = (dictionaryByName: string) => {
     const [dictionary, setDictionary] = useState<DictionaryItem[]>([]);
@@ -38,12 +38,21 @@ export const useGetDictionaryByName = (dictionaryByName: string) => {
     return dictionary;
 }
 
+const getDataToSend = (data: any): SignupInput => {
+    const res: {[name: string]: any} = {};
+    fieldsNamesToSend.forEach((name) => {
+        res[name] = data[name];
+    });
+    return res as SignupInput;
+}
+
 export const useSendData = () => {
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
     const sendData = async (data: any) => {
         setLoading(true);
+        data = getDataToSend(data);
         try {
             await Api.sendSignUp(data);
         } catch (e) {

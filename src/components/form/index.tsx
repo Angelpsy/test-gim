@@ -95,7 +95,7 @@ const Form: React.FC<Props> = (props) => {
                 })}
             </div>
             <div className={'b-form__footer'}>
-                <UIButton disabled={!isCanBeSent} className={'b-form__action'}>
+                <UIButton disabled={!isCanBeSent} className={'b-form__action'} fullWidth>
                     Sign up
                 </UIButton>
             </div>

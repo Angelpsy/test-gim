@@ -20,6 +20,7 @@
     --action-color-text: var(--color-white);
     --action-color-bg: var(--color-blue);
     --action-color-bg--disabled: var(--color-gray);
+    --action-border-radius: 31px;
 
     --error-message-fs: 10px;
     --error-message-lh: 13px;

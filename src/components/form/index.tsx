@@ -92,6 +92,7 @@ const Form: React.FC<Props> = (props) => {
                                 <UISelect
                                     value={values[field.pathToValue]}
                                     field={field}
+                                    fullWidth
                                     options={field.dictionaryNameToOptions && dictionaries[field.dictionaryNameToOptions] ?
                                         dictionaries[field.dictionaryNameToOptions].map(getOptionByItemDictionary) :
                                         []}

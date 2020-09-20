@@ -9,7 +9,7 @@
 .p-registration__container {
     width: 400px;
     border-radius: 8px;
-    background-color: var(--color-white);
+    background-color: var(--form-color-bg);
     padding: 32px 28px 53px;
 }
 .p-registration__form {}

@@ -11,6 +11,9 @@ import UIButton from '../../ui/button';
 import UIFormControl from '../../ui/form-control';
 import {getOptionByItemDictionary} from "../../utils/to-render";
 
+import IEmail from '../../icons/email';
+import ISecure from '../../icons/secure';
+
 import './styles.css';
 
 const Form: React.FC<Props> = (props) => {
@@ -38,6 +41,12 @@ const Form: React.FC<Props> = (props) => {
                                 <UITextInput
                                     value={values[field.pathToValue]}
                                     field={field}
+                                    fullWidth
+                                    renderIconLeft={field.iconStartName ? (props) => {
+                                        if (field.iconStartName === 'email') return <IEmail {...props}/>
+                                        if (field.iconStartName === 'secure') return <ISecure {...props}/>
+                                        return null;
+                                    } : undefined}
                                     onInput={(val) => props.changeValueField(field.pathToValue, val)}
                                 />
                             </UIFormControl>

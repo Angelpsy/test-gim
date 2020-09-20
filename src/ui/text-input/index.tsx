@@ -2,11 +2,15 @@ import React from 'react';
 import cx from 'classnames';
 import { Props } from './types';
 
+import './styles.css';
+
 const TextInput: React.FC<Props> = (props) => {
     const {
         value,
         field,
         className,
+        fullWidth,
+        renderIconLeft,
         onChange,
         onInput,
         ...restProps
@@ -20,15 +24,25 @@ const TextInput: React.FC<Props> = (props) => {
         onChange && onChange(event.currentTarget.value);
     }
     return (
-        <input
-            className={cx('ui-text-input', className)}
-            value={value || ''}
-            type={field.nativeType || 'text'}
-            placeholder={field.placeholder}
-            onInput={handlerInput}
-            onChange={handlerChange}
-            {...restProps}
-        />
+        <span className={cx('ui-text-input', className, {
+            'ui-text-input--full-width': fullWidth,
+            'ui-text-input--icon-left': renderIconLeft,
+        })}>
+            {renderIconLeft &&
+                <span className={'ui-text-input__icon-wrapper ui-text-input__icon-wrapper--left'}>
+                    {renderIconLeft({className: 'ui-text-input__icon'})}
+                </span>
+            }
+            <input
+                className={'ui-text-input__input'}
+                value={value || ''}
+                type={field.nativeType || 'text'}
+                placeholder={field.placeholder}
+                onInput={handlerInput}
+                onChange={handlerChange}
+                {...restProps}
+            />
+        </span>
     );
 }
 

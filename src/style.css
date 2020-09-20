@@ -10,9 +10,14 @@
 
     --input-fs: 14px;
     --input-color-bg: var(--color-gray-thin);
-    --input-color-text: var(--color-gray);
+    --input-color-text: var(--color-black);
     --input-color-placeholder: var(--color-gray);
+    --input-color-icon: var(--color-gray);
     --input-pl: 18px;
+    --input-p-after-icon: 14px;
+    --input-height: 50px;
+    --input-border-radius: 8px;
+    --input-icon-widht: 20px;
 
     --title-fs: 28px;
 
@@ -21,6 +26,7 @@
     --action-color-bg: var(--color-blue);
     --action-color-bg--disabled: var(--color-gray);
     --action-border-radius: 31px;
+    --action-height: 62px;
 
     --error-message-fs: 10px;
     --error-message-lh: 13px;

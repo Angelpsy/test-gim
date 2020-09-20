@@ -32,7 +32,7 @@ export const fields: Field[] = [
         placeholder: 'Password',
         defaultValue: null,
         require: true,
-        iconStartName: 'secured',
+        iconStartName: 'secure',
         checkIsFill: (val) => val !== '' &&  val !== null,
         validatorScheme: yup.string().min(6).required(),
     },

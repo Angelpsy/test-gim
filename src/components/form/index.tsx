@@ -8,6 +8,7 @@ import UIRadio from '../../ui/radio';
 import UICheckbox from '../../ui/checkbox';
 import UISelect from '../../ui/select';
 import UIButton from '../../ui/button';
+import UIFormControl from '../../ui/form-control';
 import {getOptionByItemDictionary} from "../../utils/to-render";
 
 const Form: React.FC<Props> = (props) => {
@@ -30,57 +31,61 @@ const Form: React.FC<Props> = (props) => {
             {fields.map((field) => {
                 if (field.type === FieldType.TEXT) {
                     return (
-                        <UITextInput
-                            key={field.id}
-                            value={values[field.pathToValue]}
-                            field={field}
-                            onInput={(val) => props.changeValueField(field.pathToValue, val)}
-                        />
+                        <UIFormControl key={field.id} errorMessage={errorsByField[field.pathToValue]} className={'b-form__row'}>
+                            <UITextInput
+                                value={values[field.pathToValue]}
+                                field={field}
+                                onInput={(val) => props.changeValueField(field.pathToValue, val)}
+                            />
+                        </UIFormControl>
                     );
                 }
                 if (field.type === FieldType.RADIO && field.options) {
                     return (
-                        <UIRadioGroup
-                            key={field.id}
-                            options={field.options}
-                            renderToOption={(option) => {
-                                return (
-                                    <UIRadio
-                                        key={option.id}
-                                        value={option.id}
-                                        checked={values[field.pathToValue] === option.id }
-                                        labelEnd={option.label}
-                                        className={option.className}
-                                        field={field}
-                                        onChange={(val) => props.changeValueField(field.pathToValue, val)}
-                                    />
-                                );
-                            }}
-                        />
+                        <UIFormControl key={field.id} errorMessage={errorsByField[field.pathToValue]} className={'b-form__row'}>
+                            <UIRadioGroup
+                                options={field.options}
+                                renderToOption={(option) => {
+                                    return (
+                                        <UIRadio
+                                            key={option.id}
+                                            value={option.id}
+                                            checked={values[field.pathToValue] === option.id }
+                                            labelEnd={option.label}
+                                            className={option.className}
+                                            field={field}
+                                            onChange={(val) => props.changeValueField(field.pathToValue, val)}
+                                        />
+                                    );
+                                }}
+                            />
+                        </UIFormControl>
                     );
                 }
                 if (field.type === FieldType.CHECKBOX) {
                     return (
-                        <UICheckbox
-                            key={field.id}
-                            checked={values[field.pathToValue]}
-                            labelEnd={field.label}
-                            isLabelAsHtml={field.isLabelAsHtml}
-                            onChange={(val) => props.changeValueField(field.pathToValue, val)}
-                        />
+                        <UIFormControl key={field.id} errorMessage={errorsByField[field.pathToValue]} className={'b-form__row'}>
+                            <UICheckbox
+                                checked={values[field.pathToValue]}
+                                labelEnd={field.label}
+                                isLabelAsHtml={field.isLabelAsHtml}
+                                onChange={(val) => props.changeValueField(field.pathToValue, val)}
+                            />
+                        </UIFormControl>
                     );
                 }
                 if (field.type === FieldType.SELECT) {
                     return (
-                        <UISelect
-                            key={field.id}
-                            value={values[field.pathToValue]}
-                            field={field}
-                            options={field.dictionaryNameToOptions && dictionaries[field.dictionaryNameToOptions] ?
-                                dictionaries[field.dictionaryNameToOptions].map(getOptionByItemDictionary) :
-                                []}
-                            onChange={(val) => props.changeValueField(field.pathToValue, val)}
-                        />
+                        <UIFormControl key={field.id} errorMessage={errorsByField[field.pathToValue]} className={'b-form__row'}>
+                            <UISelect
+                                value={values[field.pathToValue]}
+                                field={field}
+                                options={field.dictionaryNameToOptions && dictionaries[field.dictionaryNameToOptions] ?
+                                    dictionaries[field.dictionaryNameToOptions].map(getOptionByItemDictionary) :
+                                    []}
+                                onChange={(val) => props.changeValueField(field.pathToValue, val)}
+                            />
+                        </UIFormControl>
                     );
                 }
                 return null;

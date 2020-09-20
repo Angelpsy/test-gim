@@ -10,6 +10,7 @@ const TextInput: React.FC<Props> = (props) => {
         field,
         className,
         fullWidth,
+        disabled,
         renderIconLeft,
         onChange,
         onInput,
@@ -17,11 +18,11 @@ const TextInput: React.FC<Props> = (props) => {
     } = props;
 
     const handlerInput = (event: React.SyntheticEvent<HTMLInputElement>) => {
-        onInput && onInput(event.currentTarget.value);
+        !disabled && onInput && onInput(event.currentTarget.value);
     }
 
     const handlerChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
-        onChange && onChange(event.currentTarget.value);
+        !disabled && onChange && onChange(event.currentTarget.value);
     }
     return (
         <span className={cx('ui-text-input', className, {
@@ -40,6 +41,7 @@ const TextInput: React.FC<Props> = (props) => {
                 placeholder={field.placeholder}
                 onInput={handlerInput}
                 onChange={handlerChange}
+                disabled={disabled}
                 {...restProps}
             />
         </span>

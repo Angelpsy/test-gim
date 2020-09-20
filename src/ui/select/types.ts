@@ -8,6 +8,7 @@ export interface Props extends DefaultProps {
     value: string | null;
     field: Field;
     fullWidth?: boolean;
+    disabled?: boolean;
     onChange: (val: string) => void;
     renderToOption?: (option: Option, onSelect: onSelectOneOption, isSelected?: boolean) => any;
 }

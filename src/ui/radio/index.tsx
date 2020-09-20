@@ -14,11 +14,12 @@ const Radio: React.FC<Props> = (props) => {
         onChange,
         labelStart,
         labelEnd,
+        disabled,
         ...restProps
     } = props;
 
     const handlerChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
-        onChange && onChange(event.currentTarget.value);
+        !disabled && onChange && onChange(event.currentTarget.value);
     }
     return (
         <label className={cx('ui-radio', className)} {...restProps}>
@@ -29,6 +30,7 @@ const Radio: React.FC<Props> = (props) => {
                 type={'radio'}
                 name={field.id}
                 className={'ui-radio__input'}
+                disabled={disabled}
                 onChange={handlerChange}
             />
             <IRadio className={'ui-radio__check'} checked={checked}/>

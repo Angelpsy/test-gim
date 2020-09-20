@@ -13,11 +13,12 @@ const RadioInput: React.FC<Props> = (props) => {
         labelStart,
         labelEnd,
         isLabelAsHtml,
+        disabled,
         ...restProps
     } = props;
 
     const handlerChange = () => {
-        onChange && onChange(!checked);
+        !disabled && onChange && onChange(!checked);
     }
     return (
         <label className={cx('ui-checkbox', className)} {...restProps}>
@@ -30,6 +31,7 @@ const RadioInput: React.FC<Props> = (props) => {
                 type={'checkbox'}
                 onChange={handlerChange}
                 className={'ui-checkbox__input'}
+                disabled={disabled}
             />
             <ICheckbox className={'ui-checkbox__check'} checked={checked} />
             {!!labelEnd && !isLabelAsHtml &&

@@ -2,7 +2,7 @@ import React, {useMemo, useState} from 'react';
 import Form from '../../components/form';
 import {fields} from './fields';
 import {Values} from './types';
-import {useGetDictionaryByName} from "./hooks";
+import {useGetDictionaryByName, useSendData} from "./hooks";
 import * as yup from 'yup';
 
 import './style.css';
@@ -23,6 +23,7 @@ function PageRegistration() {
     const [values, setValues] = useState<Values>({...defaultValues});
     const [errorsByField, setErrorsByField] = useState({});
     const countries = useGetDictionaryByName('countries');
+    const {isLoading, sendData} = useSendData();
 
     const changeValueField = (pathToValue: string, value: any) => {
         setValues({
@@ -56,7 +57,7 @@ function PageRegistration() {
         const errors = await getErrorToValues();
         if (!errors) {
             setErrorsByField({});
-            // TODO: send to server
+            await sendData(values);
         } else {
             setErrorsByField(errors);
         }
@@ -71,6 +72,7 @@ function PageRegistration() {
                     fields={fields}
                     dictionaries={dictionaries}
                     isCanBeSent={isCanBeSent}
+                    isLoading={isLoading}
                     errorsByField={errorsByField}
                     changeValueField={changeValueField}
                     onSubmit={handlerSend}

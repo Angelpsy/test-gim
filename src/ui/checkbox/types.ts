@@ -5,5 +5,6 @@ export interface Props extends DefaultProps {
     labelStart?: string;
     labelEnd?: string;
     isLabelAsHtml?: boolean;
+    disabled?: boolean;
     onChange?: (value: boolean) => void;
 }

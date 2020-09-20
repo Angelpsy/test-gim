@@ -6,6 +6,7 @@ export interface Props extends DefaultProps {
     values: any;
     fields: Field[];
     isCanBeSent: boolean;
+    isLoading: boolean;
     errorsByField: {
         [fieldName: string]: string;
     };

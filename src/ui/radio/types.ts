@@ -7,5 +7,6 @@ export interface Props extends DefaultProps {
     labelStart?: string;
     labelEnd?: string;
     field: Field;
+    disabled?: boolean;
     onChange?: (value: string | number | undefined) => void;
 }

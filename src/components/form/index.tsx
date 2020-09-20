@@ -9,6 +9,7 @@ import UICheckbox from '../../ui/checkbox';
 import UISelect from '../../ui/select';
 import UIButton from '../../ui/button';
 import UIFormControl from '../../ui/form-control';
+import UISpinner from '../../ui/spinner';
 import {getOptionByItemDictionary} from "../../utils/to-render";
 
 import IEmail from '../../icons/email';
@@ -22,6 +23,7 @@ const Form: React.FC<Props> = (props) => {
         fields,
         dictionaries,
         isCanBeSent,
+        isLoading,
         errorsByField,
         onSubmit
     } = props;
@@ -42,6 +44,7 @@ const Form: React.FC<Props> = (props) => {
                                     value={values[field.pathToValue]}
                                     field={field}
                                     fullWidth
+                                    disabled={isLoading}
                                     renderIconLeft={field.iconStartName ? (props) => {
                                         if (field.iconStartName === 'email') return <IEmail {...props}/>
                                         if (field.iconStartName === 'secure') return <ISecure {...props}/>
@@ -66,6 +69,7 @@ const Form: React.FC<Props> = (props) => {
                                                 labelEnd={option.label}
                                                 className={option.className}
                                                 field={field}
+                                                disabled={isLoading}
                                                 onChange={(val) => props.changeValueField(field.pathToValue, val)}
                                             />
                                         );
@@ -81,6 +85,7 @@ const Form: React.FC<Props> = (props) => {
                                     checked={values[field.pathToValue]}
                                     labelEnd={field.label}
                                     isLabelAsHtml={field.isLabelAsHtml}
+                                    disabled={isLoading}
                                     onChange={(val) => props.changeValueField(field.pathToValue, val)}
                                 />
                             </UIFormControl>
@@ -93,6 +98,7 @@ const Form: React.FC<Props> = (props) => {
                                     value={values[field.pathToValue]}
                                     field={field}
                                     fullWidth
+                                    disabled={isLoading}
                                     options={field.dictionaryNameToOptions && dictionaries[field.dictionaryNameToOptions] ?
                                         dictionaries[field.dictionaryNameToOptions].map(getOptionByItemDictionary) :
                                         []}
@@ -105,8 +111,8 @@ const Form: React.FC<Props> = (props) => {
                 })}
             </div>
             <div className={'b-form__footer'}>
-                <UIButton disabled={!isCanBeSent} className={'b-form__action'} fullWidth>
-                    Sign up
+                <UIButton disabled={!isCanBeSent || isLoading} className={'b-form__action'} fullWidth>
+                    {isLoading ? <UISpinner /> : 'Sign up'}
                 </UIButton>
             </div>
         </form>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {DictionaryItem} from "../../types/dictionaries";
+import Api from '../../api/refistration';
 
 export const useGetDictionaryByName = (dictionaryByName: string) => {
     const [dictionary, setDictionary] = useState<DictionaryItem[]>([]);
@@ -35,4 +36,26 @@ export const useGetDictionaryByName = (dictionaryByName: string) => {
     }, [dictionaryByName]);
 
     return dictionary;
+}
+
+export const useSendData = () => {
+    const [isLoading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const sendData = async (data: any) => {
+        setLoading(true);
+        try {
+            await Api.sendSignUp(data);
+        } catch (e) {
+            setError(e.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    return {
+        isLoading,
+        error,
+        sendData,
+    }
 }

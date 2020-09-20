@@ -34,12 +34,14 @@ const RadioGroup: React.FC<Props> = (props) => {
         onChange,
         className,
         fullWidth,
+        disabled,
         ...restProps
     } = props;
     const [isOpen, setOpen] = useState<boolean>(false);
 
     const optionsToRender = options.map(it => ({...it, className: cx('ui-select__item', it.className)}));
     const handlerSelectOneOption = (id: string) => {
+        if (disabled) return;
         setOpen(false);
         onChange && onChange(id);
     }
@@ -64,6 +66,7 @@ const RadioGroup: React.FC<Props> = (props) => {
                     'ui-select__action-toggle--active': isOpen,
                 })}
                 type={'button'}
+                disabled={disabled}
                 onClick={() => {setOpen(!isOpen)}}
             >
                 {renderLabelToggleAction()}
@@ -72,7 +75,7 @@ const RadioGroup: React.FC<Props> = (props) => {
                 })}/>
             </button>
             <span className={cx('ui-select__dropdown', {
-                'ui-select__dropdown--active': isOpen
+                'ui-select__dropdown--active': isOpen && !disabled
             })}>
                 <span className={'ui-select__dropdown-content'}>
                     {optionsToRender.map((option) => {

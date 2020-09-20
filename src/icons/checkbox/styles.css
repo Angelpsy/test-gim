@@ -1,0 +1,33 @@
+.i-checkbox {
+    --color: var(--checkbox-input-color);
+    --size: var(--checkbox-input-size);
+    --border-radius: var(--checkbox-input-border-radius);
+
+    position: relative;
+    display: inline-block;
+
+    border: 1px solid var(--color);
+    border-radius: var(--border-radius);
+    width: var(--size);
+    height: var(--size);
+}
+
+.i-checkbox:after {
+    display: block;
+    content: "\2713";
+    position: absolute;
+    font-weight: bold;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    line-height: var(--size);
+    transform: scale(0.80) translateX(-1px);
+
+    color: transparent;
+}
+
+.i-checkbox--checked:after {
+    color: var(--color);
+}

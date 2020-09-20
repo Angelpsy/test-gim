@@ -1,6 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import { Props } from './types';
+import ICheckbox from "../../icons/checkbox";
+
+import './styles.css';
 
 const RadioInput: React.FC<Props> = (props) => {
     const {
@@ -26,7 +29,9 @@ const RadioInput: React.FC<Props> = (props) => {
                 checked={checked}
                 type={'checkbox'}
                 onChange={handlerChange}
+                className={'ui-checkbox__input'}
             />
+            <ICheckbox className={'ui-checkbox__check'} checked={checked} />
             {!!labelEnd && !isLabelAsHtml &&
                 <span className={cx('ui-checkbox__label', 'ui-checkbox__label--end')}>{labelEnd}</span>}
             {!!labelEnd && isLabelAsHtml &&

@@ -1,0 +1,18 @@
+.ui-checkbox {
+    display: flex;
+    align-content: center;
+}
+.ui-checkbox__label {
+    font-size: var(--checkbox-label-fs);
+    line-height: var(--checkbox-label-lh);
+}
+.ui-checkbox__label--start {}
+.ui-checkbox__label--end {
+    margin-left: 8px;
+}
+.ui-checkbox__input {
+    display: none;
+}
+.ui-checkbox__check {
+    margin-top: 1px;
+}

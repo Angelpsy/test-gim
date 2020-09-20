@@ -33,7 +33,16 @@
     --error-message-color-text: var(--color-red);
 
     --radio-input-color: var(--color-blue);
+    --radio-input-size: 14px;
+    --radio-input-check-size: 8px;
+    --radio-label-fs: 14px;
+    --radio-label-lh: 17px;
+
     --checkbox-input-color: var(--color-blue);
+    --checkbox-input-size: 14px;
+    --checkbox-input-border-radius: 3px;
+    --checkbox-label-fs: 14px;
+    --checkbox-label-lh: 17px;
 
     --link-color: var(--color-blue);
 }

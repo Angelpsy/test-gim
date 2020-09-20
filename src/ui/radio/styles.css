@@ -1,0 +1,18 @@
+.ui-radio {
+    display: inline-flex;
+    align-content: center;
+}
+.ui-radio__label {
+    font-size: var(--radio-label-fs);
+    line-height: var(--radio-label-lh);
+}
+.ui-radio__label--start {}
+.ui-radio__label--end {
+    margin-left: 8px;
+}
+.ui-radio__input {
+    display: none;
+}
+.ui-radio__check {
+    margin-top: 2px;
+}
